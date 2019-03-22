@@ -26,10 +26,6 @@ echo('</pre>');*/
 	    <h2><?=$product['rus_name']?> (<?=$product['price']?> рублей)</h2>
 	    <div class="descr"><?=$product['descr']?></div>
 	    <img width="300" src="img/<?=$product['img']?>" alt="<?=$product['rus_name']?>">
-	    <form method="POST" action="actions/add.php">
-            <input type="hidden" name="id" value="<?=$product['id']?>">
-            <input type="submit" value="Добавить в корзину">
-        </form>
-	    <!-- <button type="submit">Добавить в корзину</button> -->
+	    <?php require 'parts/button.php' ?>	    
 	</div>
 <?php } ?>

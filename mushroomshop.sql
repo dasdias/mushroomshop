@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Мар 21 2019 г., 14:59
+-- Время создания: Мар 22 2019 г., 12:45
 -- Версия сервера: 5.5.58
 -- Версия PHP: 5.5.38
 
@@ -42,6 +42,28 @@ INSERT INTO `cats` (`id`, `name`, `rus_name`) VALUES
 (1, 'edible', 'Съедобные грибы'),
 (2, 'poisonous', 'Ядовитые грибы'),
 (3, 'edible_plants', 'Съедобные растения');
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `myorder`
+--
+
+CREATE TABLE `myorder` (
+  `id` int(11) NOT NULL,
+  `username` varchar(100) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `phone` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Дамп данных таблицы `myorder`
+--
+
+INSERT INTO `myorder` (`id`, `username`, `email`, `phone`) VALUES
+(1, 'Вася', 'info@example.ru', '8-980-555-55-55'),
+(2, 'Петя', 'info1@example.ru', '555-55-55'),
+(15, 'Коля', 'info5@example.ru', '888-88-88');
 
 -- --------------------------------------------------------
 
@@ -86,6 +108,12 @@ ALTER TABLE `cats`
   ADD KEY `name` (`name`);
 
 --
+-- Индексы таблицы `myorder`
+--
+ALTER TABLE `myorder`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Индексы таблицы `products`
 --
 ALTER TABLE `products`
@@ -101,6 +129,12 @@ ALTER TABLE `products`
 --
 ALTER TABLE `cats`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT для таблицы `myorder`
+--
+ALTER TABLE `myorder`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT для таблицы `products`
