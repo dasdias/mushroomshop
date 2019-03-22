@@ -1,23 +1,22 @@
 <?php 
-// session_start(); 
 
 require_once 'parts/header.php';
 
+// echo('<pre>');
+// var_dump($_SESSION);
+// echo('</pre>');
 
 
 
-/*if (count($_SESSION['cart']) == 0) {
+if (isset($_SESSION['cart'])) {
+	
+
+if (count($_SESSION['cart']) == 0){ ?>
 	<div class="main">
-		<div class="card">Такого товара не существует!</div>
+		<div class="card">Вы удалили все товары.</div>
 	</div>
-}
-*/
-
-/*echo('<pre>');
-var_dump($_SESSION);
-echo('</pre>');
-*/
-if (count($_SESSION['cart']) > 0) { 
+	<a class="back" href="index.php">На главную.</a>
+<?php } else if (count($_SESSION['cart']) > 0) { 
 	foreach ($_SESSION['cart'] as $key=>$product) { ?>                    
 		<div class="cart">
 			<a href="product.php?product=<?=$product['title']?>">
@@ -28,10 +27,8 @@ if (count($_SESSION['cart']) > 0) {
 				<input type="hidden" name="delete" value="<?=$key?>"> 
 				<input type="submit" value="Удалить"> 
 			</form>
-			
-			<!-- <button type="submit">Удалить</button> -->
 		</div>
-	<?php } ?>
+<?php } ?>
 		<hr>
 		<form class="order" method="POST" action="actions/mail.php">
 			<input type="text" name="username" required placeholder="Ваше имя">
@@ -39,19 +36,20 @@ if (count($_SESSION['cart']) > 0) {
 			<input type="email" name="email" required placeholder="Ваше Email">
 			<input type="submit" name="order" placeholder="Отправить заказ">
 		</form>
-<?php } else if (count($_SESSION['cart']) == 0){ ?>
+<?php } ?>
+	
+<?php } else if (isset($_SESSION['order'] )) { ?>
 	<div class="main">
 		<div class="card">
-			В кознине товаров нет.
+		Ваш заказ под номером <?=$_SESSION['order']?> принят.
 		</div>
 	</div>
 	<a class="back" href="index.php">На главную.</a>
-<?php } else {?>
+<?php } else { ?>
 	<div class="main">
-		<div class="card">
-			Ваш заказ принят.
-		</div>
+		<div class="card">В кознине товаров нет.</div>
 	</div>
+	<a class="back" href="index.php">На главную.</a>
 <?php } ?>
 
 <hr>
