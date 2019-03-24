@@ -15,10 +15,10 @@ if (isset($_GET['cat'])) {
         <?php if (empty($products)) { ?>
              <div class="card">Такой категории товаров не существует!</div>           
         <?php } else { ?>
-            <?php foreach ($products as $product) { ?>
-                <div class="card">
+            <?php foreach ($products as $product) { ?>               
+                <div id="<?=$product['id']?>" class="card">
                     <a href="product.php?product=<?=$product['title']?>">
-                        <img src="img/<?=$product['img']?>" alt="<?=$product['rus_name']?>">
+                        <img class="img-animate" data-img-animate="<?=$product['id']?>" src="img/<?=$product['img']?>" alt="<?=$product['rus_name']?>">
                     </a>
                     <div class="label"><?=$product['rus_name']?> (<?=$product['price']?> рублей)</div>
                     <?php require 'parts/button.php';?>
@@ -28,5 +28,7 @@ if (isset($_GET['cat'])) {
     </div>
 
 </body>
+<script src="libs/jquery.min.js"></script>
+<script src="js/main.js"></script>
 </html>
 

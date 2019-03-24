@@ -27,7 +27,7 @@ $cats = $cats->fetchAll(PDO::FETCH_ASSOC);
     <ul>
         <li><a href="index.php">Главная</a></li>
         <?php foreach ($cats as $cat) { ?>
-            <li><a href="index.php?cat=<? echo $cat['name']?>"><? echo $cat['rus_name']?></a></li>
+            <li><a class="cart-anim" href="index.php?cat=<? echo $cat['name']?>"><? echo $cat['rus_name']?></a></li>
         <?php } ?>
         <li><a href="cart.php">Корзина (Товаров: 
             <?php if (isset($_SESSION['totalQuantity'])) { ?>
